@@ -7,7 +7,18 @@
     <title>web-component-playground</title>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <pb-tab-group>
+        <pb-tab slot="tab">A</pb-tab>
+        <pb-tab-panel>Tab panel A</pb-tab-panel>
+
+        <pb-tab slot="tab">B</pb-tab>
+        <pb-tab-panel>Tab panel B</pb-tab-panel>
+
+        <pb-tab slot="tab">C</pb-tab>
+        <pb-tab-panel>Tab panel C</pb-tab-panel>
+      </pb-tab-group>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
