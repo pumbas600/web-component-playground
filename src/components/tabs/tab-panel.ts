@@ -1,7 +1,7 @@
-class TabPanel extends HTMLElement {
+export default class TabPanel extends HTMLElement {
+  public static readonly TagName = "pb-tab-panel";
+
   constructor() {
     super();
   }
 }
-
-customElements.define("pb-tab-panel", TabPanel);
