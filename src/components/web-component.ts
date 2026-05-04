@@ -10,6 +10,12 @@ export default abstract class WebComponent extends HTMLElement {
     }
   }
 
+  /**
+   * Checks that the consumer has set the specified required attribute. If the attribute is not
+   * set, this method throws an error.
+   *
+   * @param attribute The required attribute to check for
+   */
   protected checkHasRequiredAttribute(attribute: string): void {
     if (!this.hasAttribute(attribute)) {
       throw new Error(
