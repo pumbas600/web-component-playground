@@ -38,9 +38,15 @@ export default class TabGroup extends WebComponent {
     const tabs = this.allTabs();
     const tabPanels = this.allTabPanels();
 
+    if (tabs.length !== tabPanels.length) {
+      throw new Error(
+        `Missing corresponding tab or tabpanel. Found ${tabs.length} tabs and ${tabPanels.length} tab panels`,
+      );
+    }
+
     const minCount = Math.min(tabs.length, tabPanels.length);
 
-    for (let index = 0; index < minCount; index++) {
+    for (let index = 0; index < tabs.length; index++) {
       const tab = tabs[index];
       const tabPanel = tabPanels[index];
 
