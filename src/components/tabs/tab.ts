@@ -18,6 +18,9 @@ export default class Tab extends WebComponent {
   }
 
   protected connectedCallback() {
+    this.upgradeProperty("name");
+    this.checkHasRequiredAttribute("name");
+
     this.setAttributeDefault("id", `tab-${this.name}-${generateUniqueId()}`);
     this.setAttributeDefault("tabindex", "-1");
     this.setAttributeDefault("aria-selected", "false");

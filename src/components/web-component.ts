@@ -10,6 +10,14 @@ export default abstract class WebComponent extends HTMLElement {
     }
   }
 
+  protected checkHasRequiredAttribute(attribute: string): void {
+    if (!this.hasAttribute(attribute)) {
+      throw new Error(
+        `Missing required attribute "${attribute}" on <${this.tagName}>`,
+      );
+    }
+  }
+
   /**
    * Sets the default value for an attribute, if it hasn't already been set by a consumer in the
    * HTML. As a general rule, attributes explicitly set consumers in HTML shouldn't be overridden.
