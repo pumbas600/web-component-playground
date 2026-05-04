@@ -1,4 +1,15 @@
 export default abstract class WebComponent extends HTMLElement {
+  protected readonly shadow: ShadowRoot;
+
+  protected constructor(template?: string) {
+    super();
+
+    this.shadow = this.attachShadow({ mode: "open" });
+    if (template) {
+      this.shadow.innerHTML = template;
+    }
+  }
+
   /**
    * Sets the default value for an attribute, if it hasn't already been set by a consumer in the
    * HTML. As a general rule, attributes explicitly set consumers in HTML shouldn't be overridden.
