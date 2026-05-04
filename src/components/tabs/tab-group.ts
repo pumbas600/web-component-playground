@@ -1,6 +1,7 @@
-import { generateRandomId, stringToFragment } from "../../helpers/dom-helpers";
+import { generateRandomId } from "../../helpers/dom-helpers";
 import Tab from "./tab";
 import TabPanel from "./tab-panel";
+import html from "./tab-group.html?raw";
 
 export default class TabGroup extends HTMLElement {
   public static readonly TagName = "pb-tab-group";
@@ -8,15 +9,7 @@ export default class TabGroup extends HTMLElement {
   constructor() {
     super();
     const shadowRoot = this.attachShadow({ mode: "open" });
-
-    const fragment = stringToFragment(`
-        <div role="tablist">
-            <slot name="tab"></slot>
-        </div>
-        <slot></slot>
-    `);
-
-    shadowRoot.append(fragment);
+    shadowRoot.innerHTML = html;
 
     const tabs = this.tabs;
     const tabPanels = this.tabPanels;
