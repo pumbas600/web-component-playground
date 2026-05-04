@@ -1,15 +1,16 @@
 import { generateUniqueId } from "../../helpers/dom-helpers";
 import WebComponent from "../web-component";
+import template from "./tab.html?raw";
 
 export default class Tab extends WebComponent {
   public static readonly TagName = "pb-tab";
 
   constructor() {
-    super();
+    super(template);
   }
 
-  public get name(): string | null {
-    return this.getAttribute("name");
+  public get name(): string {
+    return this.getAttribute("name") ?? "";
   }
 
   public set name(value: string) {
