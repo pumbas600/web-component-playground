@@ -1,4 +1,4 @@
-import { generateRandomId } from "../../helpers/dom-helpers";
+import { generateUniqueId } from "../../helpers/dom-helpers";
 import Tab from "./tab";
 import TabPanel from "./tab-panel";
 import html from "./tab-group.html?raw";
@@ -20,7 +20,7 @@ export default class TabGroup extends HTMLElement {
       const tab = tabs[index];
       const tabPanel = tabPanels[index];
 
-      const id = generateRandomId();
+      const id = generateUniqueId();
       const tabId = `tab-${id}`;
       const tabPanelId = `tab-panel-${id}`;
 

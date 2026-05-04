@@ -4,6 +4,6 @@ export function stringToFragment(html: string): DocumentFragment {
   return document.createRange().createContextualFragment(html);
 }
 
-export function generateRandomId(): number {
+export function generateUniqueId(): number {
   return idCounter++;
 }
