@@ -1,4 +1,10 @@
-<div role="tablist">
+<style>
+  .tablist {
+    display: flex;
+    flex-direction: row;
+  }
+</style>
+<div class="tablist" role="tablist">
   <slot name="tab"></slot>
 </div>
 <slot></slot>

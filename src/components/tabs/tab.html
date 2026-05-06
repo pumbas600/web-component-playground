@@ -1,3 +1,30 @@
+<style>
+  :host {
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    font-family: var(--sans);
+    letter-spacing: 0.01em;
+    font-weight: 500;
+    padding-block: 0.65rem;
+    padding-inline: 1rem;
+    background-color: rgb(255 255 255 / var(--background-color-opacity, 0));
+    transition: background-color var(--transition-duration) var(--default-easing);
+  }
+
+  :host(:hover) {
+    --background-color-opacity: 0.1;
+  }
+
+  :host(:active) {
+    --background-color-opacity: 0.075;
+  }
+
+  :host(:focus-visible) {
+    outline: var(--focus-outline);
+    --background-color-opacity: 0.1;
+  }
+</style>
+
 <div>
   <slot></slot>
 </div>
