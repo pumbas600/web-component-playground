@@ -9,18 +9,8 @@ export default class TabPanel extends WebComponent {
     super(template);
   }
 
-  private get tabPanelContainer(): Element {
-    const container = this.shadow.firstElementChild;
-    if (container) {
-      return container;
-    }
-
-    throw new Error("Missing required container element");
-  }
-
   protected connectedCallback(): void {
     this.setAttributeDefault("id", `tabpanel-${generateUniqueId()}`);
     this.setAttribute("role", "tabpanel");
-    this.tabPanelContainer.setAttribute("hidden", "until-found");
   }
 }

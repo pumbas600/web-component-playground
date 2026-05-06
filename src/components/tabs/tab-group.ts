@@ -44,14 +44,13 @@ export default class TabGroup extends WebComponent {
       );
     }
 
-    const minCount = Math.min(tabs.length, tabPanels.length);
-
     for (let index = 0; index < tabs.length; index++) {
       const tab = tabs[index];
       const tabPanel = tabPanels[index];
 
       tab.setAttribute("aria-controls", tabPanel.id);
       tabPanel.setAttribute("aria-labelledby", tab.id);
+      tabPanel.setAttribute("hidden", "until-found");
     }
   }
 }
