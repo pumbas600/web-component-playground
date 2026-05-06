@@ -1,3 +1,8 @@
+import defaultHostCSS from "./web-component.css?inline";
+
+const defaultHostStyles = new CSSStyleSheet();
+defaultHostStyles.replaceSync(defaultHostCSS);
+
 export default abstract class WebComponent extends HTMLElement {
   protected readonly shadow: ShadowRoot;
 
@@ -5,6 +10,7 @@ export default abstract class WebComponent extends HTMLElement {
     super();
 
     this.shadow = this.attachShadow({ mode: "open" });
+    this.shadow.adoptedStyleSheets = [defaultHostStyles];
     if (template) {
       this.shadow.innerHTML = template;
     }
