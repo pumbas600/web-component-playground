@@ -8,7 +8,14 @@
     padding-block: 0.65rem;
     padding-inline: 1rem;
     background-color: rgb(255 255 255 / var(--background-color-opacity, 0));
-    transition: background-color var(--transition-duration) var(--default-easing);
+    transition-duration: var(--transition-duration);
+    transition-timing-function: var(--default-easing);
+    transition-property: background-color, color;
+
+    div {
+      transition: border var(--transition-duration) var(--default-easing);
+      border-block-end: var(--border-thick) solid rgb(from white r g b / var(--underline-opacity));
+    }
   }
 
   :host(:hover) {
@@ -22,6 +29,11 @@
   :host(:focus-visible) {
     outline: var(--focus-outline);
     --background-color-opacity: 0.1;
+  }
+
+  :host([aria-selected="true"]) {
+    color: white;
+    --underline-opacity: 1;
   }
 </style>
 
