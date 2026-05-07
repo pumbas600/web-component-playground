@@ -3,6 +3,14 @@
   box-sizing: border-box;
 }
 
+/*
+ * Respect the hidden attribute as the default display value in :host overrides the browser value 
+ * by default. 
+ */
+:host([hidden]:not([hidden="until-found"])) {
+  display: none;
+}
+
 :where(button) {
   appearance: none;
   background-color: initial;
