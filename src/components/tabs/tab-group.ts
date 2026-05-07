@@ -118,5 +118,8 @@ export default class TabGroup extends WebComponent {
       tabPanel.setAttribute("aria-labelledby", tab.id);
       tabPanel.setAttribute("hidden", "until-found");
     }
+
+    /* By default, select the first tab. */
+    this.setAttributeDefault("selected", () => this.allTabs().at(0)?.name);
   }
 }

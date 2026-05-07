@@ -36,9 +36,15 @@ export default abstract class WebComponent extends HTMLElement {
    * @param value The value to set if there isn't already a value
    * @see https://web.dev/articles/custom-elements-best-practices#dont_override_the_page_author
    */
-  protected setAttributeDefault(attribute: string, value: string): void {
+  protected setAttributeDefault(
+    attribute: string,
+    valueOrValueSupplier: string | undefined | (() => string | undefined),
+  ): void {
     if (!this.hasAttribute(attribute)) {
-      this.setAttribute(attribute, value);
+      const value = typeof valueOrValueSupplier === "function" ? valueOrValueSupplier() : valueOrValueSupplier;
+      if (value !== undefined) {
+        this.setAttribute(attribute, value);
+      }
     }
   }
 
