@@ -88,7 +88,12 @@ export default class TabGroup extends WebComponent {
   }
 
   private handleClick(event: MouseEvent): void {
-    console.debug(event);
+    const target = event.target;
+
+    if (!(target instanceof Tab) || !this.allTabs().includes(target)) return;
+    if (event.altKey) return;
+
+    this.selected = target.name;
   }
 
   private handleSlotChange(): void {
