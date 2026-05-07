@@ -7,3 +7,8 @@ export function stringToFragment(html: string): DocumentFragment {
 export function generateUniqueId(): number {
   return idCounter++;
 }
+
+export const TabIndices = {
+  DISABLED: -1,
+  ENABLED: 0,
+} as const;

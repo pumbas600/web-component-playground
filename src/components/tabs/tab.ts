@@ -1,4 +1,4 @@
-import { generateUniqueId } from "../../helpers/dom-helpers";
+import { generateUniqueId, TabIndices } from "../../helpers/dom-helpers";
 import WebComponent from "../web-component";
 import template from "./tab.html?raw";
 
@@ -22,7 +22,7 @@ export default class Tab extends WebComponent {
     this.checkHasRequiredAttribute("name");
 
     this.setAttributeDefault("id", `tab-${this.name}-${generateUniqueId()}`);
-    this.setAttributeDefault("tabindex", "-1");
+    this.setAttributeDefault("tabindex", String(TabIndices.DISABLED));
     this.setAttributeDefault("aria-selected", "false");
     this.setAttribute("role", "tab");
   }
