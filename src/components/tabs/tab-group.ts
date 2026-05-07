@@ -56,8 +56,6 @@ export default class TabGroup extends WebComponent {
   }
 
   protected attributeChangedCallback(name: string, oldValue: string | null, newValue: string | null): void {
-    console.debug(name, oldValue, newValue);
-
     switch (name) {
       case "selected":
         if (oldValue !== null) {
@@ -104,7 +102,6 @@ export default class TabGroup extends WebComponent {
   }
 
   private handleKeyDown(event: KeyboardEvent): void {
-    console.debug(event.target);
     const target = event.target;
 
     if (!this.isTab(target)) return;
@@ -115,8 +112,6 @@ export default class TabGroup extends WebComponent {
       0,
       tabs.findIndex((tab) => tab.tabIndex === TabIndices.ENABLED),
     );
-
-    console.debug(currentlyFocusedTabIndex, event.key);
 
     switch (event.key) {
       case Keys.HOME:

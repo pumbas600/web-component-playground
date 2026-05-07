@@ -97,3 +97,7 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+pb-tab-panel:not(:defined) {
+  display: none;
+}
