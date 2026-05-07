@@ -12,12 +12,15 @@ export default class TabGroup extends WebComponent {
 
   constructor() {
     super(template);
-    this.onSlotChange = this.onSlotChange.bind(this);
+    this.handleSlotChange = this.handleSlotChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
 
     const slots = this.shadow.querySelectorAll("slot");
     for (const slot of slots) {
-      slot.addEventListener("slotchange", this.onSlotChange);
+      slot.addEventListener("slotchange", this.handleSlotChange);
     }
+
+    this.addEventListener("click", this.handleClick);
   }
 
   public get selected(): string {
@@ -52,26 +55,43 @@ export default class TabGroup extends WebComponent {
         if (oldValue !== null) {
           const currentSelectedTab = this.findTabWithName(oldValue);
           if (currentSelectedTab) {
-            this.setSelectedTabAttributes(currentSelectedTab, false);
+            this.setSelectedAttributes(currentSelectedTab, false);
           }
         }
 
         if (newValue !== null) {
           const selectedTab = this.findTabWithName(newValue);
           if (selectedTab) {
-            this.setSelectedTabAttributes(selectedTab, true);
+            this.setSelectedAttributes(selectedTab, true);
           }
         }
         break;
     }
   }
 
-  private setSelectedTabAttributes(tab: Tab, isSelected: boolean): void {
+  private setSelectedAttributes(tab: Tab, isSelected: boolean): void {
     tab.setAttribute("aria-selected", String(isSelected));
     tab.tabIndex = isSelected ? 0 : -1;
+    const tabPanel = this.findTabPanelControlledBy(tab);
+
+    if (tabPanel) {
+      if (isSelected) {
+        tabPanel.removeAttribute("hidden");
+      } else {
+        tabPanel.setAttribute("hidden", "until-found");
+      }
+    }
   }
 
-  private onSlotChange() {
+  private findTabPanelControlledBy(tab: Tab): TabPanel | null {
+    return this.allTabPanels().find((tabPanel) => tabPanel.getAttribute("aria-labelledBy") === tab.id) ?? null;
+  }
+
+  private handleClick(event: MouseEvent): void {
+    console.debug(event);
+  }
+
+  private handleSlotChange(): void {
     this.linkPanels();
   }
 
